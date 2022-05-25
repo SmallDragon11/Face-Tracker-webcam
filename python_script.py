@@ -3,10 +3,17 @@
 
 import cv2
 import serial,time
+import argparse
+
+parser = argparse.ArgumentParser(description='Code for FaceTrackCam.')
+parser.add_argument('--camera', '-cam', help='Camera divide number.', type=int, default=0)
+parser.add_argument('--comPort', '-com', help='Arduino COM port number.', type=str, default='com3')
+args = parser.parse_args()
+
 face_cascade= cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-cap=cv2.VideoCapture(1)
+cap=cv2.VideoCapture(args.camera)
 #fourcc= cv2.VideoWriter_fourcc(*'XVID')
-ArduinoSerial=serial.Serial('com7',9600,timeout=0.1)
+ArduinoSerial=serial.Serial(args.comPort,9600,timeout=0.1)
 #out= cv2.VideoWriter('face detection4.avi',fourcc,20.0,(640,480))
 time.sleep(1)
 
@@ -32,11 +39,12 @@ while cap.isOpened():
     #out.write(frame)
     cv2.imshow('img',frame)
     #cv2.imwrite('output_img.jpg',frame)
-    '''for testing purpose
+    
+    # for testing purpose
     read= str(ArduinoSerial.readline(ArduinoSerial.inWaiting()))
     time.sleep(0.05)
     print('data from arduino:'+read)
-    '''
+    
     # press q to Quit
     if cv2.waitKey(10)&0xFF== ord('q'):
         break
