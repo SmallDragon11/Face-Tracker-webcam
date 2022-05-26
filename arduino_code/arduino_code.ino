@@ -56,7 +56,7 @@ void loop() {
     y.write(ypos);
 
     // used for testing
-    //Serial.print("\t");
+    // Serial.print("\t");
     // Serial.print(x_mid);
     // Serial.print("\t");
     // Serial.println(y_mid);
