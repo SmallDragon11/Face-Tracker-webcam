@@ -10,15 +10,15 @@ parser.add_argument('--camera', '-cam', help='Camera divide number.', type=int, 
 parser.add_argument('--comPort', '-com', help='Arduino COM port number.', type=str, default='com3')
 args = parser.parse_args()
 
-face_cascade= cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+# face_cascade= cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 cap=cv2.VideoCapture(args.camera)
 #fourcc= cv2.VideoWriter_fourcc(*'XVID')
 ArduinoSerial=serial.Serial(args.comPort,9600,timeout=0.1)
 #out= cv2.VideoWriter('face detection4.avi',fourcc,20.0,(640,480))
 time.sleep(1)
 
-with open('face.names', 'r') as f:
-    classes = f.read().splitlines()
+# with open('face.names', 'r') as f:
+#     classes = f.read().splitlines()
 
 net = cv2.dnn.readNetFromDarknet('yolov4-tiny-obj.cfg', 'yolov4-tiny-obj_last.weights')
 model = cv2.dnn_DetectionModel(net)
