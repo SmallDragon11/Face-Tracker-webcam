@@ -17,12 +17,22 @@ ArduinoSerial=serial.Serial(args.comPort,9600,timeout=0.1)
 #out= cv2.VideoWriter('face detection4.avi',fourcc,20.0,(640,480))
 time.sleep(1)
 
+with open('face.names', 'r') as f:
+    classes = f.read().splitlines()
+
+net = cv2.dnn.readNetFromDarknet('yolov4-tiny-obj.cfg', 'yolov4-tiny-obj_last.weights')
+model = cv2.dnn_DetectionModel(net)
+model.setInputParams(scale=1 / 255, size=(416, 416), swapRB=True)
+
 while cap.isOpened():
     ret, frame= cap.read()
     frame=cv2.flip(frame,1)  #mirror the image
+    # frame = cv2.resize(frame, (416, 416))
     #print(frame.shape)
-    gray = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
-    faces= face_cascade.detectMultiScale(gray,1.1,6)  #detect the face
+    # gray = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
+    # faces= face_cascade.detectMultiScale(gray,1.1,6)  #detect the face
+    classIds, scores, faces = model.detect(frame, confThreshold=0.6, nmsThreshold=0.4)
+
     for x,y,w,h in faces:
         #sending coordinates to Arduino
         string='X{0:d}Y{1:d}'.format((x+w//2),(y+h//2))
@@ -41,9 +51,9 @@ while cap.isOpened():
     #cv2.imwrite('output_img.jpg',frame)
     
     # for testing purpose
-    read= str(ArduinoSerial.readline(ArduinoSerial.inWaiting()))
-    time.sleep(0.05)
-    print('data from arduino:'+read)
+    # read= str(ArduinoSerial.readline(ArduinoSerial.inWaiting()))
+    # time.sleep(0.05)
+    # print('data from arduino:'+read)
     
     # press q to Quit
     if cv2.waitKey(10)&0xFF== ord('q'):
