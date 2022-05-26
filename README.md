@@ -12,7 +12,7 @@ PC端使用python OpenCV匯入YOLOv4_tiny模型偵測人臉，再透過pyserial�
 
 # 訓練
 
-YOLOv4_tiny: 利用darknet以資料集WIDER FACE(http://shuoyang1213.me/WIDERFACE/)進行訓練。可參考: https://medium.com/ching-i/yolo-c49f70241aa7
+YOLOv4_tiny: 利用darknet以資料集WIDER FACE (http://shuoyang1213.me/WIDERFACE/) 進行訓練。可參考: https://medium.com/ching-i/yolo-c49f70241aa7
 
 
 
