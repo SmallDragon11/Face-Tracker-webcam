@@ -20,4 +20,4 @@ YOLOv4_tiny: 利用darknet以資料集WIDER FACE (http://shuoyang1213.me/WIDERFA
 
 yolo 使用GPU可以大大提升FPS
 
-但...openCV只能用CPU，如果要使用GPU必須安裝額外的擴充套件，在windows環境下並不好裝(我在win10裝darknet的時候差點過世)
+但...openCV只能用CPU，如果要使用GPU必須安裝額外的擴充套件
