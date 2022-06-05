@@ -17,7 +17,8 @@ void setup() {
   x.write(xpos);
   y.write(ypos);
 }
-const int angle = 2;   // degree of increment or decrement
+const int angle = 1;   // degree of increment or decrement
+const int out_of_bound = 70;
 
 void loop() {
   if (Serial.available() > 0)
@@ -32,13 +33,13 @@ void loop() {
     /* adjust the servo within the squared region if the coordinates
         is outside it
     */
-    if (x_mid > width / 2 + 30)
+    if (x_mid > width / 2 + out_of_bound)
       xpos += angle;
-    if (x_mid < width / 2 - 30)
+    if (x_mid < width / 2 - out_of_bound)
       xpos -= angle;
-    if (y_mid < height / 2 + 30)
+    if (y_mid < height / 2 + out_of_bound)
       ypos -= angle;
-    if (y_mid > height / 2 - 30)
+    if (y_mid > height / 2 - out_of_bound)
       ypos += angle;
 
 
