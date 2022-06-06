@@ -10,6 +10,8 @@
 
 * 如果同時偵測到多個臉，以最近的臉為目標
 
+![image](./demo/demo.gif)
+
 # 訓練
 
 YOLOv4_tiny: 利用darknet以資料集WIDER FACE (http://shuoyang1213.me/WIDERFACE/) 進行訓練。可參考: https://medium.com/ching-i/yolo-c49f70241aa7
