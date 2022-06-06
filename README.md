@@ -10,7 +10,7 @@
 
 * 如果同時偵測到多個臉，以最近的臉為目標
 
-![image](./demo/demo.gif)
+![image](./demo/demo2.gif)
 
 # 訓練
 
