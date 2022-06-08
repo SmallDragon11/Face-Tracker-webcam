@@ -19,11 +19,12 @@ void setup() {
 }
 const int angle = 1;   // degree of increment or decrement
 const int out_of_bound = 70;
+int x_mid, y_mid;
 
 void loop() {
   if (Serial.available() > 0)
   {
-    int x_mid, y_mid;
+    
     if (Serial.read() == 'X')
     {
       x_mid = Serial.parseInt();  // read center x-coordinate

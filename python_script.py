@@ -24,6 +24,9 @@ net = cv2.dnn.readNetFromDarknet('yolov4-tiny-obj.cfg', 'yolov4-tiny-obj_last.we
 model = cv2.dnn_DetectionModel(net)
 model.setInputParams(scale=1 / 255, size=(416, 416), swapRB=True)
 
+font = cv2.FONT_HERSHEY_SIMPLEX # FPS font
+start = time.time()
+
 while cap.isOpened():
     ret, frame= cap.read()
     frame=cv2.flip(frame,1)  #mirror the image
@@ -65,8 +68,13 @@ while cap.isOpened():
                         (640//2+70,480//2+70),
                         (255,255,255),3)
     #out.write(frame)
+    end = time.time()
+    
+    cv2.putText(frame, f'{1/(end - start):.1f} FPS', (5, 470), font, 1, (0, 255, 0), 2, cv2.LINE_AA)
+    start = end
+
     cv2.imshow('img',frame)
-    if cv2.waitKey(10)&0xFF== ord('q'):
+    if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 cap.release()
 cv2.destroyAllWindows()
