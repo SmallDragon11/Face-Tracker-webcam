@@ -12,13 +12,9 @@ args = parser.parse_args()
 
 # face_cascade= cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 cap=cv2.VideoCapture(args.camera)
-#fourcc= cv2.VideoWriter_fourcc(*'XVID')
 ArduinoSerial=serial.Serial(args.comPort,9600,timeout=0.1)
-#out= cv2.VideoWriter('face detection4.avi',fourcc,20.0,(640,480))
 time.sleep(1)
 
-# with open('face.names', 'r') as f:
-#     classes = f.read().splitlines()
 
 net = cv2.dnn.readNetFromDarknet('yolov4-tiny-obj.cfg', 'yolov4-tiny-obj_last.weights')
 model = cv2.dnn_DetectionModel(net)
@@ -30,8 +26,6 @@ start = time.time()
 while cap.isOpened():
     ret, frame= cap.read()
     frame=cv2.flip(frame,1)  #mirror the image
-    # frame = cv2.resize(frame, (416, 416))
-    #print(frame.shape)
     # gray = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
     # faces= face_cascade.detectMultiScale(gray,1.1,6)  #detect the face
     classIds, scores, faces = model.detect(frame, confThreshold=0.6, nmsThreshold=0.4)
@@ -56,24 +50,22 @@ while cap.isOpened():
         ArduinoSerial.write(string.encode('utf-8'))
         
         
-        #cv2.imwrite('output_img.jpg',frame)
         
         # for testing purpose
         # read= str(ArduinoSerial.readline(ArduinoSerial.inWaiting()))
         # time.sleep(0.05)
         # print('data from arduino:'+read)
         
-        # press q to Quit
     cv2.rectangle(frame,(640//2-70,480//2-70),
                         (640//2+70,480//2+70),
                         (255,255,255),3)
-    #out.write(frame)
     end = time.time()
     
     cv2.putText(frame, f'{1/(end - start):.1f} FPS', (5, 470), font, 1, (0, 255, 0), 2, cv2.LINE_AA)
     start = end
 
     cv2.imshow('img',frame)
+    # press q to quit
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 cap.release()

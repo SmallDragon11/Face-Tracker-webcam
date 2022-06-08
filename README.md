@@ -12,7 +12,7 @@
 
 ## demo: 
 
-![image](./demo/demo2.gif)
+![image](./demo/demo.gif)
 
 # 訓練
 
