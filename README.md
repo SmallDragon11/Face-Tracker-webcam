@@ -2,6 +2,31 @@
 
 ## reference: https://create.arduino.cc/projecthub/shubhamsantosh99/face-tracker-using-opencv-and-arduino-55412e
 
+## component
+
+1. Arduino Uno *1
+2. SG90 micro-motor *2
+3. web cam *1
+4. 9V supply *1
+5. jump wires
+
+詳細的接線請參考上方的網站
+
+## How to Run
+1. 上傳arduino_code.ino到Arduino板
+
+2. 在command line輸入
+    ```bash
+    cd FACETRACKCAM
+    python3 python_script.py --camera 0 --comPort com4
+    ```
+    按 q 關閉視窗
+
+ * --camera: 第幾號攝影機，只有一台就是0。預設值: 0
+ * --comPort: arduino的序列埠。預設值: 'com3'
+
+## 說明
+
 * 利用python OpenCV匯入YOLOv4_tiny模型偵測人臉，再透過pyserial套件傳送座標給arduino。
 
 * 本篇使用Arduino Uno控制兩顆servo馬達，自動調整鏡頭的角度，讓人臉盡量維持在鏡頭中心
