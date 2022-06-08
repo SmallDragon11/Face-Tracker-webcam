@@ -17,7 +17,7 @@
 
 2. 在command line輸入
     ```bash
-    cd FACETRACKCAM
+    cd FaceTrackCam
     python3 python_script.py --camera 0 --comPort com4
     ```
     按 q 關閉視窗
