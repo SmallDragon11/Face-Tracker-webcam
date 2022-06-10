@@ -18,7 +18,7 @@
 2. SG90 micro-motor *2
 3. web cam *1
 4. 9V supply *1
-5. jump wires
+5. jumper wires
 
 詳細的接線請參考上方的網站
 
