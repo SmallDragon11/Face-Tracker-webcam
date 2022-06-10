@@ -2,6 +2,14 @@
 
 ## reference: https://create.arduino.cc/projecthub/shubhamsantosh99/face-tracker-using-opencv-and-arduino-55412e
 
+## 差異
+
+* 原作者以Harr cascade of classifiers 來做人臉偵測 -> 速度慢，精確度不高。所以我改以**YOLOv4_tiny**偵測人臉，達到即時偵測的性能，且精確度明顯提升
+
+* 原作者沒有對同時有多個臉的情況作處理，可能導致鏡頭來回晃動。所以我加了以下判斷: 如果同時偵測到多個臉，以最近的臉為目標(面積最大的bounding box)
+
+* 更改參數，讓鏡頭能更適當地調整角度(以原作者設定的參數會導致鏡頭來回晃動，無法靜止)
+
 ## component
 
 1. Arduino Uno *1
@@ -20,20 +28,16 @@
     cd FaceTrackCam
     python3 python_script.py --camera 0 --comPort com4
     ```
-    按 q 關閉視窗
 
  * --camera: 第幾號攝影機，只有一台就是0。預設值: 0
  * --comPort: arduino的序列埠。預設值: 'com3'
+ * 按 q 關閉視窗
 
 ## 說明
 
-* 利用python OpenCV匯入YOLOv4_tiny模型偵測人臉，再透過pyserial套件傳送座標給arduino。
+* 利用python OpenCV匯入**YOLOv4_tiny**模型偵測人臉，再透過pyserial套件傳送座標給arduino。
 
 * 本篇使用Arduino Uno控制兩顆servo馬達，自動調整鏡頭的角度，讓人臉盡量維持在鏡頭中心
-
-* 原作者以Harr cascade of classifiers 來做人臉偵測 -> 速度慢，精確度不高。所以我改以YOLOv4_tiny偵測人臉，達到即時偵測的性能，且精確度明顯提升
-
-* 原作者沒有對同時有多個臉的情況作處理，可能導致鏡頭來回晃動。所以我加了以下判斷: 如果同時偵測到多個臉，以最近的臉為目標(面積最大的bounding box)
 
 ## demo: 
 
