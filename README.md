@@ -35,8 +35,8 @@
     python3 python_script.py --camera 0 --comPort com4
     ```
 
- * --camera: 第幾號攝影機，只有一台就是0。預設值: 0
- * --comPort: arduino的序列埠。預設值: 'com3'
+ * --camera, -cam: 第幾號攝影機，只有一台就是0。預設值: 0
+ * --comPort, -com: arduino的序列埠。預設值: 'com3'
 
 3. 按 q 關閉視窗
 
