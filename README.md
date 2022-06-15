@@ -12,6 +12,8 @@
 
 * 更改參數，讓鏡頭能更適當地調整角度(以原作者設定的參數會導致鏡頭來回晃動，無法靜止)
 
+* 為python檔新增了command line arguments，詳細用法請參考下面的[How to Run](https://github.com/SmallDragon11/Face-Tracker-webcam#how-to-run)
+
 ## component
 
 1. Arduino Uno *1
@@ -20,7 +22,9 @@
 4. 9V supply *1
 5. jumper wires
 
-詳細的接線請參考上方的網站
+詳細的接線請參考上方[reference](https://create.arduino.cc/projecthub/shubhamsantosh99/face-tracker-using-opencv-and-arduino-55412e)
+
+或是參考[ppt](https://docs.google.com/presentation/d/18rrGfyZpvadeQIwK-fgALN0tdU3fZvE0/edit?usp=sharing&ouid=103289787254514124299&rtpof=true&sd=true)(建議下載下來，以Microsoft office程式開啟，裡面的demo影片才能正常播放)
 
 ## How to Run
 1. 上傳arduino_code.ino到Arduino板
@@ -33,7 +37,8 @@
 
  * --camera: 第幾號攝影機，只有一台就是0。預設值: 0
  * --comPort: arduino的序列埠。預設值: 'com3'
- * 按 q 關閉視窗
+
+3. 按 q 關閉視窗
 
 ## 說明
 
@@ -51,7 +56,7 @@
 
 # 訓練
 
-YOLOv4_tiny: 利用darknet以資料集WIDER FACE (http://shuoyang1213.me/WIDERFACE/) 進行訓練。可參考: https://medium.com/ching-i/yolo-c49f70241aa7
+YOLOv4_tiny: 利用[darknet](https://pjreddie.com/darknet/)以資料集[WIDER FACE](http://shuoyang1213.me/WIDERFACE/) 進行訓練。可參考: https://medium.com/ching-i/yolo-c49f70241aa7
 
 
 
@@ -59,4 +64,4 @@ YOLOv4_tiny: 利用darknet以資料集WIDER FACE (http://shuoyang1213.me/WIDERFA
 
 yolo 在GPU執行可以大大提升FPS
 
-但openCV只能用CPU，如果要在GPU執行必須安裝額外的擴充套件
+但openCV只能用CPU，如果要在GPU執行必須安裝額外的擴充套件 --> [教學](https://pyimagesearch.com/2020/02/03/how-to-use-opencvs-dnn-module-with-nvidia-gpus-cuda-and-cudnn/)
