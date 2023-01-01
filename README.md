@@ -65,3 +65,6 @@ YOLOv4_tiny: 利用[darknet](https://pjreddie.com/darknet/)以資料集[WIDER FA
 yolo 在GPU執行可以大大提升FPS
 
 但openCV只能用CPU，如果要在GPU執行必須安裝額外的擴充套件 --> [教學](https://pyimagesearch.com/2020/02/03/how-to-use-opencvs-dnn-module-with-nvidia-gpus-cuda-and-cudnn/)
+
+# ???
+![image](./demo/派大星.png)
